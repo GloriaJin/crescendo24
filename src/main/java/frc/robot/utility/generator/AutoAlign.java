@@ -17,8 +17,8 @@ import java.util.List;
 public class AutoAlign {
     
 
-    public static Commmand withNav(Pose2d pose){
-        return AutoBuilder.pathfindToPose(pose, new PathConstraints((Constants.Mecanum.COnstraights.maxFreeSpeed), 
+    public static Command withNav(Pose2d pose){
+        return AutoBuilder.pathfindToPose(pose, new PathConstraints((Constants.Mecanum.Constraints.maxFreeSpeed), 
         Constants.Mecanum.Constraints.maxAcceleration, 
         Constants.Mecanum.Constraints.maxRotationSpeed, 
         Constants.Mecanum.Constraints.maxRotationalAcceleration));
@@ -30,7 +30,7 @@ public class AutoAlign {
         ArrayList<PathPoint> points = new ArrayList<PathPoint>(); 
         points.add(new PathPoint(Odometry.getPose().getTranslation()));
         points.add(new PathPoint(pose.getTranslation()));
-        PathPlannerPath path = PathPlannerPath.fromPathPoints(points, new PathConstraights(
+        PathPlannerPath path = PathPlannerPath.fromPathPoints(points, new PathConstraints(
             Constants.Mecanum.Constraints.maxFreeSpeed, Constants.Mecanum.Constraints.maxAcceleration,
             Constants.Mecanum.Constraints.maxRotationSpeed, Constants.Mecanum.Constraints.maxRotationalAcceleration),
             new GoalEndState(0.0, pose.getRotation())); 

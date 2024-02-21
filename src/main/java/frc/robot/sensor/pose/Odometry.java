@@ -1,7 +1,7 @@
 package frc.robot.sensor.pose;
 
 
-    import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.math.Matrix;
@@ -30,7 +30,7 @@ public class Odometry {
 
 
     static{
-        estimator = new MecanumDrivePoseEstimator(new MecanumDriveKinematics(Constants.k_chassis.modulePositions), Gyro.getHeading(), 
+        estimator = new MecanumDrivePoseEstimator(new MecanumDriveKinematics(Constants.Mecanum.modulePositions), Gyro.getHeading(), 
         new MecanumDriveWheelPositions(
             //TODO: get distance traveled by modules - encoders
         )
@@ -43,7 +43,7 @@ public class Odometry {
      * updates odometry pose estimate. called periodically by {@link Mecanum}
      */
     public static void updateEstimatePositions(){
-        estimator.update(Gyro.getHeading(), Mecanum.getPositions());
+       // estimator.update(Gyro.getHeading(), Mecanum.getPositions());
     }
 
     /**
@@ -52,7 +52,7 @@ public class Odometry {
      * @param timestamp frame timestamp
      * @param stdDevs standard deviations of vision estimate
      */
-    public static void updateEstimateVision(Pose2d pose, double timestamp, Matrix<N3, N1>, stdDevs){
+    public static void updateEstimateVision(Pose2d pose, double timestamp, Matrix<N3, N1> stdDevs){
         estimator.addVisionMeasurement(pose, timestamp, stdDevs);
     }
 
@@ -63,8 +63,9 @@ public class Odometry {
      */
 
     public static void resetPose(Pose2d pose){
-        estimator.resetPosition(Gyro.getHeading(), Mecanum.getPositions(), pose);
+     //   estimator.resetPosition(Gyro.getHeading(), Mecanum.getPositions(), pose);
     
+    }
 
     public static void updateChassisSpeedsEstimate(ChassisSpeeds estimate){
         fieldRel = estimate; 

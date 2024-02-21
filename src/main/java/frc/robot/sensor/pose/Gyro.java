@@ -5,7 +5,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.I2C;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.utility.Conversion.AngleUtil;
+import frc.robot.utility.conversion.AngleUtil;
 
 
 
@@ -43,7 +43,7 @@ public class Gyro {
     }
 
     public static void resetGyro(){
-        navx.setYaw(0);
+        navx.zeroYaw();
     }
 
     public static GyroMode getMode(){
@@ -55,8 +55,8 @@ public class Gyro {
      */
     public static Rotation2d getHeading(){
         return switch (mode){
-            case Primary -> Rotation2d.fromRotations(AngleUtil.unsignedRangeRotations(navx.getYaw().getValue() /  360));
+            case Primary -> Rotation2d.fromRotations(AngleUtil.unsignedRangeRotations(navx.getYaw() /  360));
             case Estimation -> estimate; 
-        }
+        };
     }
 }

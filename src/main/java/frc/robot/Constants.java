@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Translation2d;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -39,9 +41,6 @@ public final class Constants {
 
     public final static double gyro = 0;
 
-    public static final double frameX = 0.688; //TODO: replace with robot frame widt in meters
-    public static final double frameY = 0.822; //TODO: robot frame length in meters
-    
 
   }
 
@@ -50,7 +49,10 @@ public final class Constants {
     public static final double wheelRadius = 0.089; //TODO: wheel radius in meters
 
     public static final double wheelInset = 0.112; //TODO: how far back the wheel is set in from the frame
-
+    
+    public static final double frameX = 0.688; //TODO: replace with robot frame widt in meters
+    public static final double frameY = 0.822; //TODO: robot frame length in meters
+    
     public static final Translation2d[] modulePositions = new Translation2d[]{
       new Translation2d( ((frameX / 2) - wheelInset), ((frameY / 2) - wheelInset)),
       new Translation2d( ((frameX / 2 ) - wheelInset), -((frameY / 2) - wheelInset)),
@@ -59,7 +61,7 @@ public final class Constants {
     };
     
     /** gear reduction  */
-    public static final double driveGearRatio = 0; //TODO: gear reduction from angle motors to wheels
+    public static final double driveGearRatio = 12.75; //TODO: gear reduction from angle motors to wheels
 
     /** conversion from Neo encoder units to degrees */
     public static final double relativeConversion = 360.0; 
