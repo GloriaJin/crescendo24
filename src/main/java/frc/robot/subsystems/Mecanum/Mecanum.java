@@ -89,9 +89,7 @@ public class Mecanum extends SubsystemBase {
     driveTrain.driveCartesian(ySpeed, xSpeed, zRotation, navxAngle);
   }
 
-  public Object driveCartesian(double leftX, double leftY, double rightX, Mecanum m_chassis) {
-    return null;
-  }
+ 
 
   /*public static void setMaxOutput(double maxSpeed) {
     Chassis.setMaxOutput(0.5);
@@ -105,6 +103,4 @@ public class Mecanum extends SubsystemBase {
 
   
 
-  public void driveFieldOriented(double xSpeed, double ySpeed, double zRotation) {
-  }
 }

@@ -30,7 +30,7 @@ public class Odometry {
 
 
     static{
-        estimator = new MecanumDrivePoseEstimator(new MecanumDriveKinematics(Constants.Mecanum.modulePositions), Gyro.getHeading(), 
+        estimator = new MecanumDrivePoseEstimator(new MecanumDriveKinematics(Constants.Mecanum.modulePositions[0], Constants.Mecanum.modulePositions[1], Constants.Mecanum.modulePositions[2], Constants.Mecanum.modulePositions[3]), Gyro.getHeading(), 
         new MecanumDriveWheelPositions(
             //TODO: get distance traveled by modules - encoders
         )
