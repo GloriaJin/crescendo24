@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.Drive;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Climbing.Piston;
@@ -36,7 +37,8 @@ public class RobotContainer {
   private final Mecanum mecanum = new Mecanum();
   private final Intake intake = new Intake(); 
   private final Piston piston = new Piston(PneumaticsModuleType.CTREPCM, 1, 0); 
-   
+  private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+  //private final Autos autonomous = new Autos(); 
 
   XboxController driveController = new XboxController(0);
   XboxController manipController = new XboxController(1);
@@ -63,7 +65,7 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   //  new Trigger(m_exampleSubsystem::exampleCondition).onTrue(new ExampleCommand(m_exampleSubsystem));
-    mecanum.setDefaultCommand(new driveFieldOriented(mecanum, driveController));
+    mecanum.setDefaultCommand(new Drive(mecanum, driveController));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
@@ -76,8 +78,8 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-  //  return Autos.exampleAuto(m_exampleSubsystem);
+   return Autos.exampleAuto(exampleSubsystem);
 
-      return 
+    
   }
 }
