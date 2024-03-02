@@ -51,29 +51,29 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Mecanum extends SubsystemBase {
   //Creates new Chassis
-  /*public PWMSparkMax leftFrontMotor;
+  public PWMSparkMax leftFrontMotor;
   public PWMSparkMax leftRearMotor;
   public PWMSparkMax rightFrontMotor;
-  public PWMSparkMax rightRearMotor;*/
-
+  public PWMSparkMax rightRearMotor;
+/* 
   public WPI_VictorSPX leftFrontMotor; 
   public WPI_VictorSPX leftRearMotor;
   public WPI_VictorSPX rightFrontMotor;
-  public WPI_VictorSPX rightRearMotor;
+  public WPI_VictorSPX rightRearMotor;*/
 
   private MecanumDrive driveTrain;
   private AHRS navx; 
 
-  public Mecanum() {/* 
+  public Mecanum() {
     leftFrontMotor = new PWMSparkMax(Constants.k_chassis.leftFrontMotorPort);
     leftRearMotor = new PWMSparkMax(Constants.k_chassis.leftRearMotorPort);
     rightFrontMotor = new PWMSparkMax(Constants.k_chassis.rightFrontMotorPort);
-    rightRearMotor = new PWMSparkMax(Constants.k_chassis.rightRearMotorPort);*/
-    leftFrontMotor = new WPI_VictorSPX(Constants.k_chassis.leftFrontMotorPort);
+    rightRearMotor = new PWMSparkMax(Constants.k_chassis.rightRearMotorPort);
+    /*leftFrontMotor = new WPI_VictorSPX(Constants.k_chassis.leftFrontMotorPort);
     leftRearMotor = new WPI_VictorSPX(Constants.k_chassis.leftRearMotorPort);
     rightFrontMotor = new WPI_VictorSPX(Constants.k_chassis.rightFrontMotorPort);
     rightRearMotor = new WPI_VictorSPX(Constants.k_chassis.rightRearMotorPort);
-    
+    */
     rightFrontMotor.setInverted(true);
     rightRearMotor.setInverted(true);
     
