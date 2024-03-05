@@ -26,7 +26,7 @@ public class Intake extends SubsystemBase{
 
     private final Debouncer limitSwitchDebouncer; 
 
-    private Intake(){
+    public Intake(){
         intake = this; 
         inputs = new IntakeIOAutoLogged(); 
 
@@ -71,7 +71,7 @@ public class Intake extends SubsystemBase{
         intakePercent = percent; 
         io.setIntakeMotor(MathUtil.clamp(percent, -1, 1)* 12); 
     }
-    
+
     public double getPosition(){ return inputs.position; }
 
     public static void movePositionIntake(){
