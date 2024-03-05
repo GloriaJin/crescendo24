@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -82,8 +83,11 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-   return Autos.exampleAuto(exampleSubsystem);
+    
+    
+    // leave manually 
+    Command manualLeave = new RunCommand(() -> mecanum.driveCartesian(0, 0, 0.4, null), mecanum).withTimeout(10.5);
+    return manualLeave; 
 
     
   }

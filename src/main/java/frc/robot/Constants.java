@@ -18,19 +18,21 @@ public final class Constants {
 
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+
   }
 
   //time it takes in seconds btwn each code loop
   public static final double loopTime = 0.02; 
+
+
   
   public final class k_chassis {
     //Chassis Motor ports
-    public final static int leftFrontMotorPort = 2;
-    public final static int rightFrontMotorPort = 5;
-    public final static int rightRearMotorPort = 0;
-    public final static int leftRearMotorPort = 1;
-    // 5 2 1 0 is technically correct but i changed it so that it would drive correctrly 
-    // 2 5 0 1
+    public final static int leftFrontMotorPort = 13;
+    public final static int rightFrontMotorPort = 12;
+    public final static int rightRearMotorPort = 45;
+    public final static int leftRearMotorPort = 46;
+  
     //chassis speeds
     public final static double normalDriveSpeed = 0.6;
     public final static double slowDriveSpeed = 0.5;
@@ -104,7 +106,10 @@ public final class Constants {
 
     public static class IntakeConstants {
 
-      public static final int intakeID = 9; //edit
+      public static final int intakeId = 9; 
+
+      public static final int pivotId = 8;
+
       public static final double intakeP = 0.0;
       public static final double intakeD = 0.0;
       public static final double intakeI = 0.0;
@@ -116,6 +121,30 @@ public final class Constants {
       public static final double outputSpeed = 0.2; //edit
         // negative = counter-clockwise (?)
         // positive = clockwise (?)
+
+        public static final double gearRatioPivot = 1.0 / 10; //TODO: pivot motor gear ratio
+
+        public static final double gearRatioIntake = 1.0 / 45; //TODO: find intake motor gear ratio
+
+        public static final int limitSwitchId = 4; //TODO: find limit switch id
+
+        public static final class Setpoints{
+          
+          public static final double intake = 80; //TODO: find ground intake level
+
+          public static final double start = 0; 
+
+          public static final double shoot = 15; //TODO: find shooting motor position
+        }
+
+        public static final class Percents{
+          //TODO: figure out percentagges for motor
+          public static final double intake = 0.7; 
+
+          public static final double hold = 0; 
+
+          public static final double shoot = -1; 
+        }
 
       //public static final double intakeCloseSpeed = 0.1;
       //public static final double intakeOpenSpeed = -0.13;

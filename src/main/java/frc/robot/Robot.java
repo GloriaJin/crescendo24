@@ -5,7 +5,9 @@
 package frc.robot;
 
 import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -27,9 +29,18 @@ public class Robot extends LoggedRobot {
    */
   @Override
   public void robotInit() {
+
+    Logger.start();
+    
+    CameraServer.startAutomaticCapture(0); //driver cam 0 front
+    CameraServer.startAutomaticCapture(1); //driver cam 1 back
+
+
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+     
   }
 
   /**
