@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -45,6 +48,25 @@ public final class Constants {
 
 
   }
+
+   public static final AprilTagFieldLayout aprilTagFieldLayout =
+      AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
+
+  public final class FieldConstants {
+    public static final Translation2d BLUE_SPEAKER_POSE = new Translation2d(-0.086473, 5.757474);
+    public static final Translation2d RED_SPEAKER_POSE = new Translation2d(16.389722, 5.757474);
+
+    public static Translation2d getSpeaker() {
+      if (DriverStation.getAlliance().isPresent()) {
+        return DriverStation.getAlliance().get() == DriverStation.Alliance.Red
+            ? RED_SPEAKER_POSE
+            : BLUE_SPEAKER_POSE;
+      } else {
+        return BLUE_SPEAKER_POSE; // default to blue
+      }
+    }
+  }
+  
 
   public static final class Mecanum{
 

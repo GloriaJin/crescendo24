@@ -13,7 +13,11 @@ import frc.robot.subsystems.Climbing.Piston;
 import frc.robot.subsystems.Intake.Intake;
 import frc.robot.subsystems.Mecanum.Mecanum;
 
+import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+
 import com.kauailabs.navx.frc.AHRS;
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.wpilibj.SPI;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -41,10 +45,16 @@ public class RobotContainer {
   private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
   //private final Autos autonomous = new Autos(); 
 
+
+  //Controllers
   XboxController driveController = new XboxController(0);
   XboxController manipController = new XboxController(1);
 
+  //NavX here
   AHRS navx = new AHRS(SPI.Port.kMXP);
+
+  //Dashboard inputs 
+   private final LoggedDashboardChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -52,9 +62,10 @@ public class RobotContainer {
     
 
     new JoystickButton(driveController, Constants.k_xbox.buttonA).onTrue(new InstantCommand(() -> piston.toggleCommand())); 
-    
-    configureBindings(); 
- 
+
+
+
+    autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
   }
 
   /**
