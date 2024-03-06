@@ -14,6 +14,7 @@ import org.littletonrobotics.junction.Logger;
 public class Intake extends SubsystemBase{
     
     public static Intake intake; 
+    public static Intake pivot; 
 
     private final IntakeIO io; 
     private final IntakeIOAutoLogged inputs; 
@@ -51,28 +52,43 @@ public class Intake extends SubsystemBase{
     public void periodic(){
         inputs.positionSetpoint = targetPosition; 
         inputs.pivotPercent = pivotPercent; 
-        inputs.intakePercent = intakePercent; 
+        
 
         if(inputs.position < targetPosition){
-            io.setPivotMotor(12.0);
+            io.setPivotMotor(10.0);
         }
         else if (inputs.position > targetPosition){
-            io.setPivotMotor(-12.0);
+            io.setPivotMotor(-10.0);
         }
         
 
     }
 
-    public void setIntakePercentHold(){
-        intake.setIntakePercent(Constants.IntakeConstants.Percents.hold);
+    public static void setIntakePercentHold(){
+        Intake.setIntakePercent(Constants.IntakeConstants.Percents.hold);
     
     }
-    public void setIntakePercent(double percent){
+
+    public static void setIntakePercentIntake(){
+        Intake.setIntakePercent(Constants.IntakeConstants.Percents.intake);
+    }
+
+    public static void setIntakePercentShoot(){
+        Intake.setIntakePercent(Constants.IntakeConstants.Percents.shoot);
+    }
+
+    public static void setIntakePercent(double percent){
+        intake.setIntakePercentI(percent);
+    }
+
+    public void setIntakePercentI(double percent){
         intakePercent = percent; 
         io.setIntakeMotor(MathUtil.clamp(percent, -1, 1)* 12); 
     }
 
-    public double getPosition(){ return inputs.position; }
+    public double getPosition(){
+         return inputs.position; 
+    }
 
     public static void movePositionIntake(){
         intake.movePosition(Constants.IntakeConstants.Setpoints.intake);
@@ -83,7 +99,22 @@ public class Intake extends SubsystemBase{
         extendPid.setSetpoint(position);
     }
 
-    private boolean hasNote(){
+  
+    public static boolean hasNote(){
+        return intake.hasNoteI();
+    }
+   
+
+    private boolean hasNoteI(){
         return inputs.hasNote; 
+    }
+
+    public static boolean atSetpoint() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'atSetpoint'");
+    }
+
+    public static void movePositionShoot() {
+       intake.movePosition(Constants.IntakeConstants.Setpoints.shoot);
     }
 }

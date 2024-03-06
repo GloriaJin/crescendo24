@@ -61,9 +61,8 @@ public class RobotContainer {
     // Configure the trigger bindings
     
 
-    new JoystickButton(driveController, Constants.k_xbox.buttonA).onTrue(new InstantCommand(() -> piston.toggleCommand())); 
-
-
+   
+    mecanum.setDefaultCommand(new Drive(mecanum, driveController));
 
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
   }
@@ -80,9 +79,13 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   //  new Trigger(m_exampleSubsystem::exampleCondition).onTrue(new ExampleCommand(m_exampleSubsystem));
-    mecanum.setDefaultCommand(new Drive(mecanum, driveController));
-    
-    
+    new JoystickButton(driveController, Constants.k_xbox.buttonA).onTrue(new InstantCommand(() -> piston.toggleCommand())); 
+    new JoystickButton(manipController, Constants.k_xbox.buttonA).onTrue(new InstantCommand(() -> intake.movePositionIntake()));
+    new JoystickButton(manipController, Constants.k_xbox.buttonB).onTrue(new InstantCommand(() -> intake.movePositionShoot()));
+    new JoystickButton(manipController, Constants.k_xbox.buttonLeftLowerBumper).onTrue(new InstantCommand(() -> intake.setIntakePercentIntake())); 
+    new JoystickButton(manipController, Constants.k_xbox.buttonRightLowerBumper).onTrue(new InstantCommand(() -> intake.setIntakePercentShoot())); 
+
+
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());

@@ -14,6 +14,33 @@ public class IntakeGround extends Command{
 
     @Override
     public void initialize(){
+       
+    }
+
+    @Override
+    public void execute(){
+        
+        
+    }
+
+    
+    public void positionIntake(){
         Intake.movePositionIntake();
     }
+
+    public void intakeMotor(){
+        Intake.setIntakePercentIntake(); 
+    }
+
+/* TODO: find setpoint / set in constants 
+    @Override 
+    public boolean isFinished(){
+        return timer.get() > 1 && Intake.atSetpoint(); 
+    }*/
+
+    public void end(){
+        Intake.setIntakePercent(0);
+    }
+
+    
 }
